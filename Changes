@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Test for archive.h in addition to -larchive for tests
+    Hopefully fixes regression on OS X
 
 0.08      2014-06-22 09:25:19 -0400
   - promote to production
