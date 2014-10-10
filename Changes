@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.09      2014-10-10 08:26:40 -0400
   - Test for archive.h in addition to -larchive for tests
     Hopefully fixes regression on OS X
 
