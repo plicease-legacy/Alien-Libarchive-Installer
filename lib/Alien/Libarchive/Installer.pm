@@ -454,13 +454,14 @@ sub _try_pkg_config
     # you probably think I am crazy...
     eval q{ use PkgConfig 0.07620 };
     die $@ if $@;
-    my $value = `$^X $INC{'PkgConfig.pm'} libarchive $extra --$field`;
+    my $value = `$^X $INC{'PkgConfig.pm'} --silence-errors libarchive $extra --$field`;
     die if $?;
     $value;
   };
 
   unless(defined $value) {
-    $value = `pkg-config libarchive $extra --$field`;
+    no warnings;
+    $value = `pkg-config --silence-errors libarchive $extra --$field`;
     return $guess if $?;
   }
   
