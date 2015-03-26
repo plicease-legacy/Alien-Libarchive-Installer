@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.11      2015-03-25 21:28:08 -0400
   - Make HTTP::Tiny an explicit requirement for older Perls
 
 0.10      2014-11-05 22:08:43 -0500
