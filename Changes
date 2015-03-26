@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Make HTTP::Tiny an explicit requirement for older Perls
 
 0.10      2014-11-05 22:08:43 -0500
   - reduce noisy diagnostics when pkg-config or PkgConfig.pm fails

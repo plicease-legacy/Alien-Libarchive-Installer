@@ -11,6 +11,8 @@ pod_spelling_system:
     - DLL
     - dlls
     - ffi
+    - internet
+    - org
 
 pod_coverage:
   skip: 0
