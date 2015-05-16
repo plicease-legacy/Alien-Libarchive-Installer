@@ -728,6 +728,11 @@ sub dlls
     }
   }
   
+  if($prefix eq '' && $self->{dll_dir}->[0] eq '')
+  {
+    shift @{ $self->{dll_dir} };
+  }
+  
   require File::Spec;
   map { File::Spec->catfile($prefix, @{ $self->{dll_dir} }, $_ ) } @{ $self->{dlls} };
 }
