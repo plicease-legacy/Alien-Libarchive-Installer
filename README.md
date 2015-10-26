@@ -316,7 +316,7 @@ or [test\_ffi](https://metacpan.org/pod/Alien::Libarchive::Installer#test_ffi).
 
 # AUTHOR
 
-Graham Ollis <plicease@cpan.org>
+Graham Ollis &lt;plicease@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
