@@ -1,4 +1,4 @@
-# Alien::Libarchive::Installer
+# Alien::Libarchive::Installer [![Build Status](https://secure.travis-ci.org/plicease/Alien-Libarchive-Installer.png)](http://travis-ci.org/plicease/Alien-Libarchive-Installer)
 
 Installer for libarchive
 
