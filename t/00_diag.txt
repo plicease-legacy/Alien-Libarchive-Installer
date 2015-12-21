@@ -1,4 +1,0 @@
-ExtUtils::CBuilder
-HTTP::Tiny
-Module::Build
-Test::More
