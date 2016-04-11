@@ -331,7 +331,7 @@ sub system_install
     if($^O eq 'MSWin32')
     {
       # On MSWin32 the entire path is not included in dl_library_path
-      # buth that is the most likely place that we will find dlls.
+      # but that is the most likely place that we will find dlls.
       @dir_search_list = grep { -d $_ } split /;/, $ENV{PATH};
     }
     else
