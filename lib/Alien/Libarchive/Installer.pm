@@ -318,7 +318,7 @@ sub system_install
     };
     return $build unless $@;
   }
-  
+
   my $build = bless {
     cflags => _try_pkg_config(undef, 'cflags', '', ''),
     libs   => _try_pkg_config(undef, 'libs',   '-larchive', ''),
@@ -373,7 +373,7 @@ sub system_install
       closedir $dh;
     }
   }
-  
+
   $build->test_compile_run || die $build->error if $options{test} =~ /^(compile|both)$/;
   $build->test_ffi || die $build->error if $options{test} =~ /^(ffi|both)$/;
   $build;
@@ -688,6 +688,7 @@ sub dlls
   my($self, $prefix) = @_;
   
   $prefix = $self->{prefix} unless defined $prefix;
+  $prefix = '' if $^O eq 'MSWin32' && $prefix eq '\\';
   
   unless(defined $self->{dlls} && defined $self->{dll_dir})
   {
@@ -734,7 +735,9 @@ sub dlls
   }
   
   require File::Spec;
-  map { File::Spec->catfile($prefix, @{ $self->{dll_dir} }, $_ ) } @{ $self->{dlls} };
+  $^O eq 'MSWin32'
+    ? map { File::Spec->catfile(         @{ $self->{dll_dir} }, $_ ) } @{ $self->{dlls} }
+    : map { File::Spec->catfile($prefix, @{ $self->{dll_dir} }, $_ ) } @{ $self->{dlls} };
 }
 
 =head1 INSTANCE METHODS
