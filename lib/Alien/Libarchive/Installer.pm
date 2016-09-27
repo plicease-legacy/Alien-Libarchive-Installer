@@ -2,6 +2,7 @@ package Alien::Libarchive::Installer;
 
 use strict;
 use warnings;
+use File::ShareDir qw( dist_dir );
 
 # ABSTRACT: Installer for libarchive
 # VERSION
@@ -199,6 +200,7 @@ sub build_requires
   my %prereqs = (
     'HTTP::Tiny'   => 0,
     'Archive::Tar' => 0,
+    'Alien::patch' => '0.08',
   );
   
   if($^O eq 'MSWin32')
@@ -517,6 +519,28 @@ sub build_install
       die "unable to find source in build root" if @list == 0;
       die "confused by multiple entries in the build root" if @list > 1;
       $list[0];
+    };
+    
+    do {
+      $DB::single = 1;
+      my $share_dir = dist_dir('Alien-Libarchive-Installer');
+      my($version) = [File::Spec->splitpath(Cwd::getcwd())]->[2] =~ /libarchive-([0-9\.]+)/;
+      if($version)
+      {
+        my $patch = File::Spec->catdir($share_dir, 'patches', "$version.patch");
+        if(-r $patch)
+        {
+          require Alien::patch;
+          Alien::patch->import(); # add patch to the path if not already there.
+          my $patch_exe = Alien::patch->exe;
+          system "$patch_exe -p1 < $patch";
+          die "patch failed" if $?;
+        }
+      }
+      else
+      {
+        warn "unable to determine version number.";
+      }
     };
   
     _msys(sub {

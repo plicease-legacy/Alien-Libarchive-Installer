@@ -52,14 +52,12 @@ BEGIN {
 
 use Alien::Libarchive::Installer;
 
-plan tests => 3;
-
 my $prefix = tempdir( CLEANUP => 1 );
 
 my $type = eval { require FFI::Raw } ? 'both' : 'compile';
 note "type = $type";
 
-foreach my $version (qw( 3.1.2 3.0.4 2.8.4 ))
+foreach my $version (qw( 3.2.1 3.1.2 3.0.4 2.8.4 ))
 {
   subtest "build version $version" => sub {
     plan skip_all => 'this version does not work on this platform'
@@ -81,3 +79,4 @@ foreach my $version (qw( 3.1.2 3.0.4 2.8.4 ))
   };
 }
 
+done_testing;

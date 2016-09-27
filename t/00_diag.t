@@ -10,7 +10,9 @@ my %modules;
 my $post_diag;
 
 $modules{$_} = $_ for qw(
+  Alien::patch
   ExtUtils::CBuilder
+  File::ShareDir
   HTTP::Tiny
   Module::Build
   Test::More
