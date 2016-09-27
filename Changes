@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.15      2016-09-27 14:29:08 -0400
+  - patch 3.2.1 which has problems with some versions of lzma (gh#5)
+
 0.14      2016-04-11 16:58:56 -0400
   - Strawberry fixes
 
