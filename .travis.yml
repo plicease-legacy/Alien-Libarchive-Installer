@@ -13,6 +13,7 @@ install:
 
   - cpanm Devel::CheckLib AnyEvent::Open3::Simple HTTP::Tiny
   - cpanm FFI::Raw -n || true
+  - cpanm Alien::patch
 
 perl:
   - "5.14"
